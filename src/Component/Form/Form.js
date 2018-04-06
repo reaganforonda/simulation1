@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./reset.css";
 import axios from "axios";
-import Button from '../Button/Button';
+import Button from "../Button/Button";
 
 export default class Form extends Component {
   constructor() {
@@ -19,10 +19,13 @@ export default class Form extends Component {
     this.handleImageInput = this.handleImageInput.bind(this);
     this.handelCancelButton = this.handelCancelButton.bind(this);
     this.addProduct = this.addProduct.bind(this);
+    this.updateProduct = this.updateProduct.bind(this);
   }
 
-  componentDidUpdate(){
-    //TODO: 
+  componentDidUpdate(prevProps) {
+    //   if(prevProps !== this.props.selected){
+    //       this.setState({img: this.props.selected.img, prodName: this.props.selected.name, price: this.props.selected.price, id: null});
+    //   }
   }
 
   handleInput(e) {
@@ -47,11 +50,24 @@ export default class Form extends Component {
       .post(`http://localhost:3005/api/product`, product)
       .then(result => {
         this.setState({ products: result.data });
+        this.props.getAllInventory();
+        this.handelCancelButton();
       })
       .catch(e => console.log(e));
+  }
 
-    this.props.getAllInventory();
-    this.handelCancelButton();
+  updateProduct(id, product){
+      let change = {
+          price : this.state.price,
+          img : this.state.img,
+          name : this.state.name
+      }
+      
+      axios.put(`http://localhost:3005/api/product/${id}`, change).then((result) => {
+        this.setState({products : result.data});
+
+      this.props.getAllInventory();
+      }).catch((e) => console.log(e));
   }
 
   render() {
@@ -81,8 +97,12 @@ export default class Form extends Component {
           />
         </div>
         <div className="buttons">
-          <Button onclick={this.handelCancelButton} title='Cancel'></Button>
-          <Button onclick={this.addProduct} title='Add to Inventory'></Button>
+          <Button onclick={this.handelCancelButton} title="Cancel" />
+          {this.state.id === null ? (
+            <Button onclick={this.addProduct} title="Add to Inventory" />
+          ) : (
+            <Button onclick={this.addProduct} title="Save Changes" />
+          )}
         </div>
       </div>
     );

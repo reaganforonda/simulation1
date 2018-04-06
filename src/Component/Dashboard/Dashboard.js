@@ -15,7 +15,7 @@ export default class Dashboard extends Component{
 
     deleteProduct(id){
         axios.delete(`http://localhost:3005/api/inventory/${id}`).then((result)=> {
-            this.props.getAllInventory;
+            this.props.getAllInventory();
         }).catch((e) => console.log(e));
     }
 
@@ -25,7 +25,7 @@ export default class Dashboard extends Component{
                 {this.props.products.map(val => {
                     return (
                         <div key={val.id}>
-                        <Product product={val} delete={this.deleteProduct} selectedProduct={this.props.selectedProduct}/> 
+                        <Product product={val} delete={this.deleteProduct}/> 
                         </div>                  
                     )   
                 })}

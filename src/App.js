@@ -12,7 +12,7 @@ class App extends Component {
 
     this.state = {
       products: [],
-      selectedProduct: ""
+      selectedProduct: {}
     };
 
     this.getAllInventory = this.getAllInventory.bind(this);
@@ -50,12 +50,12 @@ class App extends Component {
         <Header />
         <Form
           getAllInventory={this.getAllInventory}
-          selectedProduct={this.state.selectedProduct}
+          selected={this.state.selectedProduct}
         />
         <Dashboard
           products={this.state.products}
           getAllInventory={this.getAllInventory}
-          selected={this.selectedProduct}
+          selected={this.getSelectedProduct}
         />
       </div>
     );

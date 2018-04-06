@@ -8,7 +8,7 @@ export default function Product(props){
            <p>{props.product.price}</p>
            <img src={props.product.img}/>
            <div className='buttons'>
-           <Button title='Delete'/>
+           <Button id={props.product.id} onclick={props.delete} title='Delete'/>
            <Button title='Edit'/>
            </div>
         </div>

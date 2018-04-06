@@ -50,6 +50,19 @@ module.exports = {
       console.log(e);
       res.status(500).send();
     })
+  },
+
+  update : (req, res) => {
+    const dbInstance = req.app.get('db');
+    const id = req.params.id;
+    const {name, price, img} = req.body;
+
+    dbInstance.UPDATE_PRODUCT([id, name, price, img]).then((result) => {
+      res.status(200).send(result);
+    }).catch(e => {
+      console.log(e);
+      res.status(500).send();
+    })
   }
   
 };

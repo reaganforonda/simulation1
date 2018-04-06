@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./reset.css";
 import axios from "axios";
+import Button from '../Button/Button';
 
 export default class Form extends Component {
   constructor() {
@@ -21,7 +22,7 @@ export default class Form extends Component {
   }
 
   componentDidUpdate(){
-
+    //TODO: 
   }
 
   handleInput(e) {
@@ -80,12 +81,8 @@ export default class Form extends Component {
           />
         </div>
         <div className="buttons">
-          <button type="button" onClick={this.handelCancelButton}>
-            Cancel
-          </button>
-          <button type="button" onClick={this.addProduct}>
-            Add to Inventory
-          </button>
+          <Button onclick={this.handelCancelButton} title='Cancel'></Button>
+          <Button onclick={this.addProduct} title='Add to Inventory'></Button>
         </div>
       </div>
     );

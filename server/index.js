@@ -20,6 +20,7 @@ app.get('/api/inventory', controller.getInventory);
 app.get('/api/inventory/:id', controller.getProduct)
 app.post('/api/product', controller.addNewProduct)
 app.delete('/api/inventory/:id', controller.deleteProduct)
+app.put('/api/inventory/:id', controller.update)
 
 app.listen(process.env.port || port, () => {
     console.log(`Creepin on Port: ${port}`);

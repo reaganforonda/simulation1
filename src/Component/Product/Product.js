@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../Button/Button';
 
 export default function Product(props){
     return (
@@ -7,8 +8,8 @@ export default function Product(props){
            <p>{props.product.price}</p>
            <img src={props.product.img}/>
            <div className='buttons'>
-           <button type='button'>Delete</button>
-           <button type='button'>Edit</button>
+           <Button title='Delete'/>
+           <Button title='Edit'/>
            </div>
         </div>
     )

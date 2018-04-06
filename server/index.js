@@ -1,16 +1,22 @@
-const controller = require('./controller.js');
-const bodyParser = require('body-parser');
 const express = require('express');
+const bodyParser = require('body-parser');
 const cors = require('cors');
-const port = 3010;
-
+const dotEnv = require('dotenv');
+const massive = require('massive');
+const port = 3005;
 const app = express();
+const controller = require('./controller.js');
+dotEnv.config();
 
 app.use(bodyParser.json());
 app.use(cors());
 
+massive(process.env.CONNECTION_STRING).then((dbInstance) => {
+    app.set('db', dbInstance);
+}).catch((e) => console.log(`Error: ${e}`));
 
 
-app.listen(port, ()=> {
-    console.log(`Creepin' on Port: ${port}`)
+
+app.listen(process.env.port || port, () => {
+    console.log(`Creepin on Port: ${port}`);
 })

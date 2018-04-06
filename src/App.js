@@ -23,6 +23,7 @@ class App extends Component {
     this.getAllInventory();
   }
 
+  // Get all products in inventory
   getAllInventory() {
     axios
       .get(`http://localhost:3005/api/inventory`)
@@ -32,6 +33,8 @@ class App extends Component {
       .catch(e => console.log(e));
   }
 
+
+  // Get selected product from inventory by ID
   getSelectedProduct(id) {
     axios
       .get(`http://localhost:3005/api/inventory/${id}`)

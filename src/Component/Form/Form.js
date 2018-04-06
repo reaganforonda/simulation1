@@ -10,7 +10,6 @@ export default class Form extends Component {
       img: "",
       prodName: "",
       price: 0,
-      defaultImg: "http://via.placeholder.com/350x150",
       products: [],
       id: null
     };
@@ -19,6 +18,10 @@ export default class Form extends Component {
     this.handleImageInput = this.handleImageInput.bind(this);
     this.handelCancelButton = this.handelCancelButton.bind(this);
     this.addProduct = this.addProduct.bind(this);
+  }
+
+  componentDidUpdate(){
+
   }
 
   handleInput(e) {

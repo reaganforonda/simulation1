@@ -1,9 +1,11 @@
 import React from 'react';
 
-export default function Product(){
+export default function Product(props){
     return (
         <div>
-            Product Func Component
+           <h2>{props.product.name}</h2>
+           <p>{props.product.price}</p>
+           <img src={props.product.img}/>
         </div>
     )
 }

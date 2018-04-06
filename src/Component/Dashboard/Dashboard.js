@@ -18,9 +18,12 @@ export default class Dashboard extends Component{
     render(){
         return (
             <div>
-                Dashboard Componeent
-                <Product />
-            </div>
+                {this.props.products.map(val => {
+                    return (
+                        <Product product={val}/> 
+                    )   
+                })}
+            </div>  
         )
     }
 }

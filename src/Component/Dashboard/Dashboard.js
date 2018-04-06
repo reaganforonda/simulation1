@@ -20,7 +20,9 @@ export default class Dashboard extends Component{
             <div>
                 {this.props.products.map(val => {
                     return (
+                        <div key={val.id}>
                         <Product product={val}/> 
+                        </div>                  
                     )   
                 })}
             </div>  

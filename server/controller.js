@@ -13,5 +13,18 @@ module.exports = {
         console.log(e);
         res.status(500).send();
       });
+  },
+
+  addNewProduct : (req, res) => {
+    const dbInstance = req.app.get("db");
+    const {name, price, img} = req.body;
+    
+    dbInstance.CREATE_PRODUCT([name, price, img]).then((result) => {
+        res.status(200).send(result);
+    }).catch(e => {
+        console.log(e);
+        res.status(500).send();
+    })
   }
+  
 };

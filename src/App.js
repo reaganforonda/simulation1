@@ -32,7 +32,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Form />
+        <Form getAllInventory={this.getAllInventory}/>
         <Dashboard products={this.state.products} />
       </div>
     );

@@ -18,6 +18,7 @@ massive(process.env.CONNECTION_STRING).then((dbInstance) => {
 // ENDPOINTS
 app.get('/api/inventory', controller.getInventory);
 app.post('/api/product', controller.addNewProduct)
+app.delete('/api/inventory/:id', controller.deleteProduct)
 
 app.listen(process.env.port || port, () => {
     console.log(`Creepin on Port: ${port}`);

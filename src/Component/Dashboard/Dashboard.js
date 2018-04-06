@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Product from '../Product/Product';
+import axios from 'axios';
 
 export default class Dashboard extends Component{
     constructor(){
@@ -9,9 +10,16 @@ export default class Dashboard extends Component{
             products : [],
             defaultImg : 'https://loremflickr.com/320/240/dog'
         }
+
+        // this.deleteProduct = this.deleteProduct.bind(this);
     }
 
 
+    // deleteProduct(id){
+    //     axios.delete(`http://localhost:3005/api/inventory/${id}`).then((result) => {
+    //         this.setState({products: result});
+    //     })
+    // }
 
 
 

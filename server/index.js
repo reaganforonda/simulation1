@@ -15,7 +15,8 @@ massive(process.env.CONNECTION_STRING).then((dbInstance) => {
     app.set('db', dbInstance);
 }).catch((e) => console.log(`Error: ${e}`));
 
-
+// ENDPOINTS
+app.get('/api/inventory', controller.getInventory); 
 
 app.listen(process.env.port || port, () => {
     console.log(`Creepin on Port: ${port}`);

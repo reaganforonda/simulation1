@@ -55,7 +55,7 @@ class App extends Component {
         <Dashboard
           products={this.state.products}
           getAllInventory={this.getAllInventory}
-          selected={this.getSelectedProduct}
+          getSelectedProduct={this.getSelectedProduct}
         />
       </div>
     );

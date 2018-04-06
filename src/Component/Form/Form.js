@@ -12,7 +12,7 @@ export default class Form extends Component {
       prodName: "",
       price: 0,
       products: [],
-      id: null
+      id: ''
     };
 
     this.handleInput = this.handleInput.bind(this);
@@ -23,9 +23,7 @@ export default class Form extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    //   if(prevProps !== this.props.selected){
-    //       this.setState({img: this.props.selected.img, prodName: this.props.selected.name, price: this.props.selected.price, id: null});
-    //   }
+    
   }
 
   handleInput(e) {

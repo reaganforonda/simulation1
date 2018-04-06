@@ -4,36 +4,56 @@ import "./App.css";
 import Header from "./Component/Header/Header";
 import Dashboard from "./Component/Dashboard/Dashboard";
 import Form from "./Component/Form/Form";
-import axios from 'axios';
+import axios from "axios";
 
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      products: []
+      products: [],
+      selectedProduct: ""
     };
 
-    this.getAllInventory= this.getAllInventory.bind(this);
+    this.getAllInventory = this.getAllInventory.bind(this);
+    this.getSelectedProduct = this.getSelectedProduct.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getAllInventory();
   }
 
-  getAllInventory(){
-    axios.get(`http://localhost:3005/api/inventory`).then((result) => {
-      this.setState({products: result.data})
-    }).catch((e) => console.log(e));
+  getAllInventory() {
+    axios
+      .get(`http://localhost:3005/api/inventory`)
+      .then(result => {
+        this.setState({ products: result.data });
+      })
+      .catch(e => console.log(e));
   }
 
+  getSelectedProduct(id) {
+    axios
+      .get(`http://localhost:3005/api/inventory/${id}`)
+      .then(result => {
+        this.setState({ selectedProduct: result.data });
+      })
+      .catch(e => console.log(e));
+  }
 
   render() {
     return (
       <div className="App">
         <Header />
-        <Form getAllInventory={this.getAllInventory}/>
-        <Dashboard products={this.state.products} getAllInventory={this.getAllInventory}/>
+        <Form
+          getAllInventory={this.getAllInventory}
+          selectedProduct={this.state.selectedProduct}
+        />
+        <Dashboard
+          products={this.state.products}
+          getAllInventory={this.getAllInventory}
+          selected={this.selectedProduct}
+        />
       </div>
     );
   }

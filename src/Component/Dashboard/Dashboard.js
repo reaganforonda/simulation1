@@ -8,7 +8,6 @@ export default class Dashboard extends Component{
 
         this.state = {
             products : [],
-            defaultImg : 'https://loremflickr.com/320/240/dog'
         }
 
         this.deleteProduct = this.deleteProduct.bind(this);
@@ -26,7 +25,7 @@ export default class Dashboard extends Component{
                 {this.props.products.map(val => {
                     return (
                         <div key={val.id}>
-                        <Product product={val} delete={this.deleteProduct}/> 
+                        <Product product={val} delete={this.deleteProduct(val.id)} selectedProduct={this.props.selectedProduct}/> 
                         </div>                  
                     )   
                 })}

@@ -38,6 +38,18 @@ module.exports = {
       console.log(e);
       res.status(500).send();
     })
+  },
+
+  getProduct : (req, res) => {
+    const dbInstance = req.app.get('db');
+    const id = req.params.id;
+
+    dbInstance.GET_PRODUCT([id]).then((result)=> {
+      res.status(200).send(result);
+    }).catch(e => {
+      console.log(e);
+      res.status(500).send();
+    })
   }
   
 };
